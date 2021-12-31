@@ -1,0 +1,26 @@
+  <div class="scores">
+    <div class="user-score score-col">
+      <h3>Your Score</h3>
+      <div class="score-col-in user-score-in">
+        <div *ngIf="user_score_details" class="score-row user-score-row">
+          <div class="user-row-1" *ngIf="user_score_details.user.photoURL || user_score_details.user.displayName">
+            <div class="user_img" *ngIf="user_score_details.user.photoURL"><img
+                src="{{user_score_details.user.photoURL}}" /></div>
+            <div *ngIf="user_score_details.user.displayName">{{ user_score_details.user.displayName }}</div>
+          </div>
+          <span
+            *ngIf="!user_score_details.user.photoURL && !user_score_details.user.displayName">{{ user_score_details.user.email }}</span><span
+            class="user_score_number">{{ user_score_details.user_score }}</span>
+        </div>
+        <a class="btn btn_secondary" (click)=" retry()"><i class="fa fa-refresh" aria-hidden="true"></i> Retry</a>
+      </div>
+    </div>
+    <div class="top-scores score-col">
+      <h3>Top Scores</h3>
+      <div class="score-col-in top-scores-in">
+        <div class="score-row top-scores-row" *ngFor="let item of items">
+          <span>{{ item.email }}</span><span>{{ item.user_score }}</span>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<application-header></application-header>
+
+<div #quiz_round_info class="quiz-round-info">
+  <div #quiz_round_num class="quiz-round-num">
+    <div #quiz_round_num class="quiz-round-num-in">
+      <div>
+        <div>
+          <h4>Round</h4>
+        </div>
+        <div>
+          <h3> {{ round_num }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz-round">
+  <div class="question">
+    {{ question }}
+  </div>
+  <div class="options" *ngIf="options">
+
+    <app-option #opts *ngFor="let qst of options" [id]="qst.id" class="quiz-option"
+      [ngClass]="qst.user ? qst.user : 'wrong' " [ngClass]="qst.answer ? qst.answer : '' "
+      (click)="option_chosen($event)">
+
+      {{ qst.name }}
+    </app-option>
+
+  </div>
+</div>
